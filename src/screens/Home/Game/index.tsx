@@ -1,8 +1,12 @@
 import { Start } from "./Start";
 
 const Game = () => {
+    const handleOnStartGame = () => {
+        
+    }
+
     return (
-        <Start />
+        <Start handleOnStartGame={handleOnStartGame}/>
     )
 }
 
