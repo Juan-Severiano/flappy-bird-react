@@ -1,9 +1,9 @@
 import { View } from "react-native";
+import React from "react";
 import Matter from "matter-js";
+import { styles } from "./styles";
 
-import { styles } from "./style";
-
-const Floor = (props) => {
+const Flor = (props) => {
   const widthBody = props.body.bounds.max.x - props.body.bounds.min.x;
   const heightBody = props.body.bounds.max.y - props.body.bounds.min.y;
 
@@ -21,27 +21,30 @@ const Floor = (props) => {
           xBody,
           yBody,
           color,
-        }).floor
+        }).bird
       }
     />
   );
 };
 
 export default (world, color, pos, size) => {
-  const initialFloor = Matter.Bodies.rectangle(
+  const initialFlor = Matter.Bodies.rectangle(
     pos.x,
     pos.y,
     size.width,
     size.height,
-    { label: "Floor", isStatic: true }
+    {
+      label: "Flor",
+      isStatic: true,
+    }
   );
 
-  Matter.World.add(world, [initialFloor]);
+  Matter.World.add(world, [initialFlor]);
 
   return {
-    body: initialFloor,
+    body: initialFlor,
     color,
     pos,
-    renderer: <Floor />,
+    renderer: <Flor />,
   };
 };

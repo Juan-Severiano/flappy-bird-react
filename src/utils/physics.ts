@@ -1,20 +1,21 @@
-import Matter from 'matter-js'
-import { getPipeSizePosPair } from './ramdom';
+import Matter from "matter-js";
+import { getPipeSizePosPair } from "./random";
 import { Dimensions } from 'react-native'
 
 const windowHeight = Dimensions.get('window').height
 const windowWidth = Dimensions.get('window').width
 
-
-export const Physics = (entities, {touches, time, dispatch}) => {
+export const Physics = (entities, {touches, time, dispatch }) => {
     let engine = entities.physics.engine;
 
     touches.filter(t => t.type === 'press').forEach(t => {
         Matter.Body.setVelocity(entities.Bird.body, {
             x: 0,
-            y: -4
+            y: -4 
         })
-    })
+    });
+
+    Matter.Engine.update(engine, time.delta);
 
     for(let index = 1; index <= 2; index++){
 
@@ -30,11 +31,9 @@ export const Physics = (entities, {touches, time, dispatch}) => {
         Matter.Body.translate(entities[`ObstacleBottom${index}`].body, {x:  -3, y: 0})
     }
 
-    Matter.Engine.update(engine, time.delta);
 
-
-    Matter.Events.on(engine, 'collisionStart', () => {
-        dispatch({ type: 'game_over'})
+    Matter.Events.on(engine, 'collisionStart', (event) => {
+        dispatch({ type: 'game_over'});
     })
 
     return entities

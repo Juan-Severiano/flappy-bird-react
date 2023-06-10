@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { View, Image, TouchableWithoutFeedback } from "react-native";
+import { View, Image } from "react-native";
+import React, { useEffect } from "react";
 
 import GAME_OVER from "../../../../assets/images/game-over.png";
 
@@ -11,9 +11,10 @@ const GameOver = ({ handleBackToStart }) => {
       handleBackToStart();
     }, 3000);
   }, []);
+
   return (
     <View style={styles.container}>
-      <Image source={GAME_OVER} style={styles.logo} />
+      <Image source={GAME_OVER} style={styles.logoStyle} />
     </View>
   );
 };

@@ -1,11 +1,11 @@
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { GameEngine } from "react-native-game-engine";
+import entities from "../../../entities";
+import { Physics } from "../../../utils/physics";
+import { styles } from "./styles";
+
 import { Start } from "./Start";
 import { GameOver } from "./GameOver";
-import { GameEngine } from "react-native-game-engine";
-
-import entities from "../../../entities";
-import { styles } from "./styles";
-import { Physics } from "../../../utils/physics";
 
 const Game = () => {
   const [running, setIsRunning] = useState(false);
@@ -18,7 +18,7 @@ const Game = () => {
     setIsGameOver(false);
   };
 
-  const handleOnStartGame = () => {
+  const handleOnStart = () => {
     setIsRunning(true);
     setIsGameOver(false);
   };
@@ -28,16 +28,18 @@ const Game = () => {
     setIsGameOver(true);
   };
 
-  const handleOnEvent = (event) => {
-    switch (event.type) {
+  const handleOnEvent = (e) => {
+    switch (e.type) {
       case "game_over":
         handleOnGameOver();
         break;
     }
   };
 
+  useEffect(() => {}, []);
+
   if (!running && !isGameOver) {
-    return <Start handleOnStartGame={handleOnStartGame} />;
+    return <Start handleOnStart={handleOnStart} />;
   }
 
   if (!running && isGameOver) {
@@ -47,8 +49,8 @@ const Game = () => {
   return (
     <GameEngine
       systems={[Physics]}
-      ref={gameEngineRef}
       running={running}
+      ref={gameEngineRef}
       entities={entities()}
       onEvent={handleOnEvent}
       style={styles.engineContainer}
@@ -56,4 +58,4 @@ const Game = () => {
   );
 };
 
-export { Game };
+export default Game;

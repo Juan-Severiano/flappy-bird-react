@@ -1,23 +1,5 @@
-import { useCallback, useEffect } from "react";
-import { StatusBar } from "expo-status-bar";
-import * as SplashScreen from "expo-splash-screen";
+import registerRootComponent from "expo/build/launch/registerRootComponent";
 
-import { Home } from "./src/screens/Home";
-export default function App() {
-  const SplashScreenHide = useCallback(async () => {
-    await SplashScreen.hideAsync();
-  }, []);
+import { App } from "./src";
 
-  useEffect(() => {
-    setTimeout(() => {
-      SplashScreenHide();
-    }, 300);
-  }, []);
-
-  return (
-    <>
-      <StatusBar style="auto" hidden />
-      <Home />
-    </>
-  );
-}
+registerRootComponent(App);

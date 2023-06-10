@@ -1,16 +1,20 @@
 import { View, Image, TouchableWithoutFeedback } from "react-native";
-import LOGO from "../../../../assets/images/logo.png"
-import  PLAY  from "../../../../assets/images/play.png"
+import React from "react";
 
-import { styles } from "./style";
+import LOGO from "../../../../assets/images/logo.png";
+import PLAY from "../../../../assets/images/play.png";
 
-const Start = ({handleOnStartGame}) => {
-    return <View style={styles.container}>
-        <Image source= {LOGO} style={styles.logo} />
-        <TouchableWithoutFeedback onPress={handleOnStartGame}>
-            <Image source={PLAY} style={styles.playButton}/>
-        </TouchableWithoutFeedback>
+import { styles } from "./styles";
+
+const Start = ({ handleOnStart }) => {
+  return (
+    <View style={styles.container}>
+      <Image source={LOGO} style={styles.logoStyle} />
+      <TouchableWithoutFeedback onPress={handleOnStart}>
+        <Image source={PLAY} style={styles.playStyle} />
+      </TouchableWithoutFeedback>
     </View>
-}
+  );
+};
 
-export { Start }
+export { Start };

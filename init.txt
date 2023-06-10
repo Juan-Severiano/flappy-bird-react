@@ -1,4 +1,0 @@
-npm i -g expo-cli
-npx create-expo-app name-app
-npx expo install expo-splash-screen
-yarn add react-native-game-engine

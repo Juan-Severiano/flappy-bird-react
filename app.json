@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "flappy-bird",
-    "slug": "flappy-bird",
+    "jsEngine": "hermes",
+    "name": "flappybird",
+    "slug": "flappybird",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,7 +10,10 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "cover",
-      "backgroundColor": "#71c5cf"
+      "backgroundColor": "#71C5CF"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,7 +24,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#71C5CF"
       }
     },
     "web": {
