@@ -1,10 +1,17 @@
-import Matter from "matter-js";
-import { Image } from "react-native";
+import Matter from "matter-js"
+import { Image } from "react-native"
 
-import BIRD from "../../assets/images/bird.png";
+import PIPE_GREEN from "../../assets/images/pipe-green.png"
+import PIPE_GREEN_INVERTED from "../../assets/images/pipe-green-inverted.png"
+
+import PIPE_ORANGE from "../../assets/images/pipe-orange.png"
+import PIPE_ORANGE_INVERTED from "../../assets/images/pipe-orange-inverted.png"
+
+
+
 import {styles} from "./style";
 
-const Floor = (props) => {
+const Obstacle = (props) => {
     const widthBody = props.body.bounds.max.x - props.body.bounds.min.x
     const heightBody = props.body.bounds.max.y - props.body.bounds.min.y
 
@@ -17,25 +24,24 @@ const Floor = (props) => {
         <Image 
         source={BIRD}
         style={styles({
-            xBody,yBody, widthBody, heightBody, color
+            xBody, yBody, widthBody, heightBody, color
         }).floor}
         />
     )
 }
 
-export default (world, color, pos, size) => {
-    const initialFloor = Matter.Bodies.rectangle(
-        pos.x, pos.y, size.width, size.height, {
-            label: 'Floor', isStatic: true
-        }
+export default (world, label, color, pos, size, isTop = false) => {
+    const initialObstacle = Matter.Bodies.rectangle(
+        pos.x, pos.y, size.width, size.height, {label, isStatic: true}
     )
 
-    Matter.world.add(world, [initialFloor])
+    Matter.World.add(world, [initialObstacle])
 
     return {
-        body: initialFloor, 
+        body: initialObstacle, 
         color,
         pos,
-        renderer: <Floor />
+        isTop,
+        renderer: <Obstacle />
     }
 }
