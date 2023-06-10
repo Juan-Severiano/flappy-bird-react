@@ -30,7 +30,7 @@ export default (world, color, pos, size) => {
         }
     )
 
-    Matter.world.add(world, [initialBird])
+    Matter.World.add(world, [initialBird])
 
     return {
         body: initialBird, 
