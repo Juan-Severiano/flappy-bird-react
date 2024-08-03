@@ -25,10 +25,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#71C5CF"
-      }
+      },
+      "package": "com.juansev.flappybird"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a9ac85a0-1eea-41ae-869d-70ceeec3baaa"
+      }
     }
   }
 }
